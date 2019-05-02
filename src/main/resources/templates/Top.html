@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<script type="text/javascript" src="/js/action.js"></script>
+<title>書籍管理システム：ログイン画面</title>
+</head>
+
+<body>
+
+  <p class="screenName">ログイン画面</p>
+
+  <!-- メッセージエリア -->
+  <div class="messageArea">
+    <p>
+      <hr width="1500" size="1" color="#000000" noshade>
+        <label>　</label><label th:text="${message}"></label>
+      <hr width="1500" size="1" color="#000000" noshade>
+    </p>
+  </div>
+
+  <!-- ログインパーツエリア -->
+  <div class="loginPartsArea">
+
+    <form action="#" th:action="@{/login}" method="GET">
+      <p>
+        <label for="userId">ユーザＩＤ：</label>
+        <input id="userId" name="userId" type="text" size="40" onInput="checkForm(this)" />
+      </p>
+      <p>
+        <label for="password">パスワード：</label>
+        <input id="password" name="password" type="text" size="40" onInput="checkForm(this)" />
+      </p>
+      <p>
+        <input class="loginButton" type="submit" value="ログイン　" onmouseover="buttonOver(this)" onmouseout="buttonOut(this)" />
+      </p>
+    </form>
+    <form action="">
+      <input class="loginButton" type="button"  name="windowClose" value="キャンセル" onmouseover="buttonOver(this)" onmouseout="buttonOut(this)" onclick="window.close();">
+    </form>
+
+  </div>
+
+</body>
+</html>

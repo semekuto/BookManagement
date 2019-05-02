@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<script type="text/javascript" src="/js/action.js"></script>
+<title>書籍管理システム：書籍情報検索画面</title>
+</head>
+
+<body>
+
+  <p class="screenName">書籍情報検索画面</p>
+
+  <!-- メッセージエリア -->
+  <div class="messageArea">
+    <p>
+      <hr width="1500" size="1" color="#000000" noshade>
+        <label>　</label><label th:text="${message}"></label>
+      <hr width="1500" size="1" color="#000000" noshade>
+    </p>
+  </div>
+
+  <!-- ヘッダーエリア -->
+  <div class="headerArea">
+    <p>
+      <form action="#" th:action="@{/logout}">
+      <label>ユーザID：</label>
+      <label th:text="${userId}"></label>
+       　　<input type="submit" value="ログアウト" />
+      </form>
+    </p>
+  </div>
+
+
+  <!-- 検索エリア -->
+  <div class="searchArea">
+  <form action="#" th:action="@{/book/bookSearchByCondition}">
+    <table class="searchTable"  border="1">
+      <tr>
+        <th colspan="2">検索条件</th>
+      </tr>
+      <tr>
+        <td>書籍管理ID</td>
+        <td>
+          <input id="searchBookId" name="searchBookId" type="text" size="4" onInput="checkForm(this)" />
+        </td>
+      </tr>
+    </table>
+
+    <br>
+
+    <!-- 検索ボタン -->
+    <input id="searchButton" class="" type="submit" value="検索" />
+
+  </form>
+  </div>
+
+  <!-- ブックリストエリア -->
+  <div class="bookListArea">
+    <table class="bookList"  border="1">
+      <caption>書籍一覧</caption>
+      <tr>
+        <th>書籍管理ID</th>
+        <th>書籍名</th>
+        <th>管理開始日</th>
+        <th>管理ステータス</th>
+        <th>登録日時</th>
+        <th>更新日時</th>
+      </tr>
+      <tr th:each="forDispBook:${forDispBooks}">
+        <td th:text="${forDispBook.bookId}">bookId</td>
+        <td th:text="${forDispBook.bookName}">bookName</td>
+        <td th:text="${forDispBook.bmStartDate}">bmStartDate</td>
+        <td th:text="${forDispBook.bmStatus}">bmStatus</td>
+        <td th:text="${forDispBook.createTime}">createTime</td>
+        <td th:text="${forDispBook.updateTime}">updateTime</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- メインボタンエリア -->
+  <div class="underButtonArea">
+    <p>
+      <form action="#" th:action="@{/back}">
+        <input class="underButton" type="submit" value="戻る" />
+      </form>
+    </p>
+  </div>
+
+</body>
+</html>

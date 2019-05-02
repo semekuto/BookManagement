@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<script type="text/javascript" src="/js/action.js"></script>
+<title>書籍管理システム：メニュー画面</title>
+</head>
+
+<body>
+
+  <p class="screenName">メニュー画面</p>
+
+  <!-- メッセージエリア -->
+  <div class="messageArea">
+    <p>
+      <hr width="1500" size="1" color="#000000" noshade>
+        <label>　</label><label th:text="${message}"></label>
+      <hr width="1500" size="1" color="#000000" noshade>
+    </p>
+  </div>
+
+  <!-- ヘッダーエリア -->
+  <div class="headerArea">
+    <p>
+      <form action="#" th:action="@{/logout}">
+      <label>ユーザID：</label>
+      <label th:text="${userId}"></label>
+       　　<input type="submit" value="ログアウト" />
+      </form>
+    </p>
+  </div>
+
+  <!-- 書籍管理ボタンエリア -->
+  <div class="bmButtonArea">
+    <table border="1">
+      <caption>書籍管理ボタン</caption>
+      <tr>
+        <td>
+          <form action="#" th:action="@{/book/bookSearch}" method="GET">
+            <input class="bmButton" type="submit" value="書籍情報検索" onmouseover="buttonOver(this)" onmouseout="buttonOut(this)" />
+          </form>
+        </td>
+        <td>
+          <form action="#" th:action="@{/book/bookEntry}" method="GET">
+            <input class="bmButton" type="submit" value="書籍情報登録" onmouseover="buttonOver(this)" onmouseout="buttonOut(this)" />
+          </form>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <form action="#" th:action="@{/book/bookUpdate}" method="GET">
+            <input class="bmButton" type="submit" value="書籍情報更新" onmouseover="buttonOver(this)" onmouseout="buttonOut(this)" />
+          </form>
+        </td>
+        <td>
+          <form action="#" th:action="@{/book/bookDelete}" method="GET">
+            <input class="bmButton" type="submit" value="書籍情報削除"  onmouseover="buttonOver(this)" onmouseout="buttonOut(this)"/>
+          </form>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.BookMapper">
+
+	<insert id="insert">
+		insert into bms_book values (
+			#{bookId},
+			#{bookName},
+			#{bmStartDate},
+			#{deleteFlag},
+			#{createTime},
+			#{updateTime}
+		)
+	</insert>
+
+	<select id="selectAll" resultType="com.example.entity.BookEntity">
+		select
+			BOOK_ID as bookId,
+			BOOK_NAME as bookName,
+			BM_START_DATE as bmStartDate,
+			DELETE_FLAG as deleteFlag,
+			CREATE_TIME as createTime,
+			UPDATE_TIME as updateTime
+		from bms_book
+	</select>
+
+	<select id="selectByPrimaryKey" resultType="com.example.entity.BookEntity">
+		select
+			BOOK_ID as bookId,
+			BOOK_NAME as bookName,
+			BM_START_DATE as bmStartDate,
+			DELETE_FLAG as deleteFlag,
+			CREATE_TIME as createTime,
+			UPDATE_TIME as updateTime
+		from bms_book
+		where BOOK_ID = #{bookId}
+	</select>
+
+	<update id="updateBookNameByPrimaryKey">
+		update bms_book
+			set BOOK_NAME = #{bookName},
+				UPDATE_TIME = #{updateTime}
+		where BOOK_ID = #{bookId}
+	</update>
+
+	<update id="updateDeleteFlagByPrimaryKey">
+		update bms_book
+			set BOOK_NAME = #{deleteFlag},
+				UPDATE_TIME = #{updateTime}
+		where BOOK_ID = #{bookId}
+	</update>
+
+	<delete id="deleteAll">
+		delete from bms_book
+	</delete>
+
+	<delete id="deleteByPrimaryKey">
+		delete from bms_book where BOOK_ID = #{bookId}
+	</delete>
+
+</mapper>

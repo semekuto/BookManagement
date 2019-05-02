@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.UserMapper">
+
+	<insert id="insert">
+		insert into bms_user values (
+			#{userId},
+			#{password},
+			#{userName},
+			#{userNameKanji},
+			#{createTime},
+			#{updateTime}
+		)
+	</insert>
+
+	<select id="selectAll" resultType="com.example.entity.UserEntity">
+		select
+			USER_ID as userId,
+			PASSWORD as password,
+			USER_NAME as userName,
+			USER_NAME_KANJI as userNameKanji,
+			CREATE_TIME as createTime,
+			UPDATE_TIME as updateTime
+		from bms_user
+	</select>
+
+	<select id="selectByPrimaryKey" resultType="com.example.entity.UserEntity">
+		select
+			USER_ID as userId,
+			PASSWORD as password,
+			USER_NAME as userName,
+			USER_NAME_KANJI as userNameKanji,
+			CREATE_TIME as createTime,
+			UPDATE_TIME as updateTime
+		from bms_user
+		where USER_ID = #{userId}
+	</select>
+
+	<select id="selectForLogin" resultType="com.example.entity.UserEntity">
+		select
+			USER_ID as userId,
+			PASSWORD as password,
+			USER_NAME as userName,
+			USER_NAME_KANJI as userNameKanji,
+			CREATE_TIME as createTime,
+			UPDATE_TIME as updateTime
+		from bms_user
+		where USER_ID = #{userId}
+		and PASSWORD = #{password}
+	</select>
+
+	<update id="updateUserNameByPrimaryKey">
+		update bms_user
+			set USER_NAME = #{userName},
+				UPDATE_TIME = #{updateTime}
+		where USER_ID = #{userId}
+	</update>
+
+	<delete id="deleteAll">
+		delete from bms_user
+	</delete>
+
+	<delete id="deleteByPrimaryKey">
+		delete from bms_user where USER_ID = #{userId}
+	</delete>
+
+</mapper>
